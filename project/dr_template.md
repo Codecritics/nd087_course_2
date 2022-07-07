@@ -26,6 +26,19 @@ More detailed descriptions of each asset identified above.
 ## DR Plan
 ### Pre-Steps:
 List steps you would perform to setup the infrastructure in the other region. It doesn't have to be super detailed, but high-level should suffice.
+* Create a Route53 record, configure DNS failover policy to shift the traffic
+* Preconfigure the S3 (Terraform State files) and AMIs
+* Configure Terraform files (duplicate configuration in zone2 with correct AZs)
+* Create Key Pairs and deploy the EKS Clusters, Security Groups
+* Deploy Prometheus and Grafana
+* Access the DR Dashboard on Grafana the check the DR deployment 
+* Deploy the ALB, EC2 and check the DR Dashboard
+* Configure the read RDS cluster with replication on primary cluster
+* Monitor again
 
 ## Steps:
 You won't actually perform these steps, but write out what you would do to "fail-over" your application and database cluster to the other region. Think about all the pieces that were setup and how you would use those in the other region
+* Stop the RDS in primary region, failover will point to the read cluster
+* Verify the RDS failed over
+* Redirect the IP to the new Cluster write and read replicas
+* Redirect the IPs of the ALB to the new Failover region
