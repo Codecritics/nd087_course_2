@@ -1,0 +1,20 @@
+Preparing your terminal...
+[cloudshell-user@ip-10-0-103-56 ~]$ Try these commands to get started:
+aws help  or  aws <command> help  or  aws <command> --cli-auto-prompt
+[cloudshell-user@ip-10-0-103-56 ~]$ ws ec2 create-restore-image-task --object-key ami-0ec6fdfb365e5fc00.bin --bucket udacity-srend --name "udacity-<your_name>^C
+[cloudshell-user@ip-10-0-103-56 ~]$ aws ec2 create-restore-image-task --object-key ami-0ec6fdfb365e5fc00.bin --bucket udacity-srend --name "test-ami-image-amalto"
+
+An error occurred (InvalidAMIName.Duplicate) when calling the CreateRestoreImageTask operation: The AMI name is taken. Specify a different AMI name.test-ami-image-amalto
+[cloudshell-user@ip-10-0-103-56 ~]$ aws ec2 create-restore-image-task --object-key ami-0ec6fdfb365e5fc00.bin --bucket udacity-srend --name "test-ami-image-amalto"
+{
+    "ImageId": "ami-0a792d022890cfc8e"
+}
+[cloudshell-user@ip-10-0-103-56 ~]$ aws ec2 copy-image --source-image-id ami-0a792d022890cfc8e --source-region us-east-1 --region us-east-2 --name "test-ami-image-amalto"
+{
+    "ImageId": "ami-0b7b4dcb56629942d"
+}
+[cloudshell-user@ip-10-0-103-56 ~]$ aws ec2 copy-image --source-image-id ami-0a792d022890cfc8e --source-region us-east-1 --region us-west-1 --name "test-ami-image-amalto"
+{
+    "ImageId": "ami-0ee08871c0feda9cd"
+}
+[cloudshell-user@ip-10-0-103-56 ~]$
