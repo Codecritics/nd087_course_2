@@ -1,0 +1,181 @@
+ codecriticsamalto@MBP-de-Marius-2  ~/Documents/Personnel/projets/Planning-for-High-Availability-and-Incident-Response/project/starter-code/zone2   main ✚ ● ?  terraform apply                              ✔  10171  10:04:44
+module.project_eks.aws_iam_role_policy_attachment.node_CloudWatchAgentServerPolicy: Refreshing state... [id=app-udacity-eks-node-role-20220709074859384400000006]
+module.project_eks.aws_iam_role_policy_attachment.node_AmazonEKS_CNI_Policy: Refreshing state... [id=app-udacity-eks-node-role-20220709074859383200000001]
+module.project_eks.aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy: Refreshing state... [id=app-udacity-eks-cluster-role-20220709074859383500000005]
+module.project_eks.aws_iam_role_policy_attachment.node_AmazonEC2ContainerRegistryReadOnly: Refreshing state... [id=app-udacity-eks-node-role-20220709074859383300000003]
+module.project_eks.aws_security_group.eks-cluster: Refreshing state... [id=sg-0fbb6c521ddc46e64]
+module.project_ec2.aws_security_group.ec2_sg: Refreshing state... [id=sg-093b532f7181bfbad]
+module.project_eks.aws_iam_role_policy_attachment.cluster_AmazonEKSServicePolicy: Refreshing state... [id=app-udacity-eks-cluster-role-20220709074859384400000007]
+module.project_eks.aws_iam_role_policy_attachment.node_AmazonEKSWorkerNodePolicy: Refreshing state... [id=app-udacity-eks-node-role-20220709074859383300000004]
+module.project_alb.aws_lb_target_group.udacity: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-1:051396997999:targetgroup/udacity-lb-tg/9e5bd7e9a321ff99]
+module.project_eks.aws_eks_cluster.cluster: Refreshing state... [id=udacity-cluster]
+module.project_alb.aws_lb.udacity: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-1:051396997999:loadbalancer/app/udacity-lb/12040ab975ca3701]
+module.project_ec2.aws_instance.ubuntu[1]: Refreshing state... [id=i-0ce280e1ffbe1f522]
+module.project_ec2.aws_instance.ubuntu[0]: Refreshing state... [id=i-098e442e0ed0bf448]
+module.project_ec2.aws_instance.ubuntu[2]: Refreshing state... [id=i-092d5c7f37e72326a]
+module.project_alb.aws_lb_listener.udacity: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-1:051396997999:listener/app/udacity-lb/12040ab975ca3701/ade322837c23cd38]
+module.project_eks.aws_iam_role_policy_attachment.cluster_AmazonEKSCloudwatchPolicy: Refreshing state... [id=app-udacity-eks-node-role-20220709074859383200000002]
+module.project_eks.aws_iam_role_policy_attachment.node_harmony_policy_attachment: Refreshing state... [id=app-udacity-eks-node-role-20220709074859630100000008]
+module.project_eks.aws_eks_node_group.node: Refreshing state... [id=udacity-cluster:app-udacity-node-group]
+kubernetes_namespace.udacity: Refreshing state... [id=udacity]
+module.project_alb.aws_lb_target_group_attachment.udacity[0]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-1:051396997999:targetgroup/udacity-lb-tg/9e5bd7e9a321ff99-2022070907491839060000000a]
+module.project_alb.aws_lb_target_group_attachment.udacity[1]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-1:051396997999:targetgroup/udacity-lb-tg/9e5bd7e9a321ff99-20220709074918092300000009]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the last "terraform apply":
+
+  # kubernetes_namespace.udacity has changed
+  ~ resource "kubernetes_namespace" "udacity" {
+        id = "udacity"
+
+      ~ metadata {
+          + annotations      = {}
+          + labels           = {}
+            name             = "udacity"
+            # (3 unchanged attributes hidden)
+        }
+    }
+
+  # module.project_alb.aws_lb.udacity has changed
+  ~ resource "aws_lb" "udacity" {
+        id                         = "arn:aws:elasticloadbalancing:us-west-1:051396997999:loadbalancer/app/udacity-lb/12040ab975ca3701"
+        name                       = "udacity-lb"
+      + tags                       = {}
+        # (17 unchanged attributes hidden)
+
+
+        # (3 unchanged blocks hidden)
+    }
+
+  # module.project_alb.aws_lb_listener.udacity has changed
+  ~ resource "aws_lb_listener" "udacity" {
+        id                = "arn:aws:elasticloadbalancing:us-west-1:051396997999:listener/app/udacity-lb/12040ab975ca3701/ade322837c23cd38"
+      + tags              = {}
+        # (5 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.project_alb.aws_lb_target_group.udacity has changed
+  ~ resource "aws_lb_target_group" "udacity" {
+        id                                 = "arn:aws:elasticloadbalancing:us-west-1:051396997999:targetgroup/udacity-lb-tg/9e5bd7e9a321ff99"
+        name                               = "udacity-lb-tg"
+      + tags                               = {}
+        # (14 unchanged attributes hidden)
+
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # module.project_eks.aws_eks_cluster.cluster has changed
+  ~ resource "aws_eks_cluster" "cluster" {
+      + enabled_cluster_log_types = []
+        id                        = "udacity-cluster"
+        name                      = "udacity-cluster"
+      + tags                      = {}
+        # (10 unchanged attributes hidden)
+
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # module.project_eks.aws_eks_node_group.node has changed
+  ~ resource "aws_eks_node_group" "node" {
+        id              = "udacity-cluster:app-udacity-node-group"
+      + labels          = {}
+        tags            = {
+            "Name" = "eks-udacity-nodes"
+        }
+        # (14 unchanged attributes hidden)
+
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # module.project_eks.aws_security_group.eks-cluster has changed
+  ~ resource "aws_security_group" "eks-cluster" {
+        id                     = "sg-0fbb6c521ddc46e64"
+        name                   = "SG-eks-cluster"
+      + tags                   = {}
+        # (8 unchanged attributes hidden)
+    }
+
+
+Unless you have made equivalent changes to your configuration, or ignored the relevant attributes using ignore_changes, the following plan may include actions to undo or respond to these changes.
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # kubernetes_service.grafana-external will be created
+  + resource "kubernetes_service" "grafana-external" {
+      + id                     = (known after apply)
+      + status                 = (known after apply)
+      + wait_for_load_balancer = true
+
+      + metadata {
+          + annotations      = {
+              + "service.beta.kubernetes.io/aws-load-balancer-nlb-target-type" = "ip"
+              + "service.beta.kubernetes.io/aws-load-balancer-type"            = "nlb"
+            }
+          + generation       = (known after apply)
+          + name             = "grafana-external"
+          + namespace        = "monitoring"
+          + resource_version = (known after apply)
+          + uid              = (known after apply)
+        }
+
+      + spec {
+          + allocate_load_balancer_node_ports = true
+          + cluster_ip                        = (known after apply)
+          + cluster_ips                       = (known after apply)
+          + external_traffic_policy           = (known after apply)
+          + health_check_node_port            = (known after apply)
+          + internal_traffic_policy           = (known after apply)
+          + ip_families                       = (known after apply)
+          + ip_family_policy                  = (known after apply)
+          + publish_not_ready_addresses       = false
+          + selector                          = {
+              + "app.kubernetes.io/name" = "grafana"
+            }
+          + session_affinity                  = "None"
+          + type                              = "LoadBalancer"
+
+          + port {
+              + node_port   = (known after apply)
+              + port        = 80
+              + protocol    = "TCP"
+              + target_port = "3000"
+            }
+
+          + session_affinity_config {
+              + client_ip {
+                  + timeout_seconds = (known after apply)
+                }
+            }
+        }
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+kubernetes_service.grafana-external: Creating...
+kubernetes_service.grafana-external: Creation complete after 5s [id=monitoring/grafana-external]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+account_id = "051396997999"
+caller_arn = "arn:aws:iam::051396997999:user/MariusTanawa"
+caller_user = "AIDAQX5376NXSSHJXBV2F"
+ codecriticsamalto@MBP-de-Marius-2  ~/Documents/Personnel/projets/Planning-for-High-Availability-and-Incident-Response/project/starter-code/zone2   main ✚ ● ?                                               ✔  10174  10:14:30
