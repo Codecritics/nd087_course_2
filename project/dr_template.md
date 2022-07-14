@@ -21,7 +21,13 @@ Identify your zones here
 | AMIs                          | Images for EC2 instance                       | N/A                                                                    | 1                                                               | Deployed in both AZs                                                                                         |
 
 ### Descriptions
-More detailed descriptions of each asset identified above.
+* VPCs have IPs in multiple availability zones.
+* 1 Cluster in each region with 2 nodes.
+* 1 ALB deployed in each region for the web servers.
+* 2 S3 buckets. One in each region.
+* 3 Ubuntu EC2 instances for web in each region.
+* 2 RDS clusters (with each primary/secondary nodes deployed), one in each region  with a backup retention policy of 5 days.
+* Replication of RDS between region1 and region2.
 
 ## DR Plan
 ### Pre-Steps:
